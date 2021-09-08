@@ -72,7 +72,7 @@ function App() {
           {islands.map((island, index) => 
             <div key={index}>
               Island { index } :
-                From { JSON.stringify(ArrayMin(island)) } To { JSON.stringify(ArrayMax(island)) }
+                From { JSON.stringify(ArrayMin(island)) } To { JSON.stringify(ArrayMax(island)) } Nodes: ({ island.length })
             </div>
           )}
       </div>
@@ -81,12 +81,13 @@ function App() {
 }
 
 function CalculateIslands() {
-  let threshold = 0;
-  let islandDistance = 3;
-
   let dataInfo = data[0].data;
   let workData = [];
   let islands = [];
+  
+  let threshold = 0;
+  let islandDistance = dataInfo.length * 0.05;
+  console.log("islandDistance:", islandDistance);
 
   // Mounting workData
   for (let x = 0; x < dataInfo.length; x++) {
@@ -114,15 +115,15 @@ function CalculateIslands() {
 
       found = island.find(n => Math.abs(n.x - node.x) <= islandDistance);
       if (found) {
-        console.log(node, found, found.x - node.x);
+        // console.log(node, found, found.x - node.x);
         islands[y].push(node);
         break;
       }
     }
 
-    console.log(found);
+    // console.log(found);
     if (!found) {
-      console.log("Not Found", found);
+      // console.log("Not Found", found);
       islands[islands.length] = [node];
     }
   }

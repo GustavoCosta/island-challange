@@ -8,13 +8,14 @@ const data = [
   }
 ]
 
-function GenerateData() {  
+function GenerateData() {
+  let totalPoints = 1000;
   let goesUp = 1;
   let pointsToMove = 5;
   let force = 1;
   let y = 0;
 
-  for (let x = 0; x < 100; x++) {
+  for (let x = 0; x < totalPoints; x++) {
     if (pointsToMove === 0) {
       goesUp = getRandomInt(0, 2);
       pointsToMove = getRandomInt(1, 6);      
